@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">MathieuEtThomas</string>
     <string name="action_settings">Settings</string>
+    <string name="nom">Nom</string>
+    <string name="prenom">Prenom</string>
+    <string name="date">Date</string>
+    <string name="ville_de_naissance">Ville de naissance</string>
 </resources>

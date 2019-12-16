@@ -8,11 +8,21 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
+
+    @Bind(R.id.textView2) TextView nom;
+    @Bind(R.id.textView) TextView prenom;
+    @Bind(R.id.textView4) TextView date;
+    @Bind(R.id.textView6) TextView ville_de_naissance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @OnClick(R.id.button)
     public void valider(View view) {
-
+        Toast.makeText(getApplicationContext(),"coucou", Toast.LENGTH_SHORT).show();
     }
 }

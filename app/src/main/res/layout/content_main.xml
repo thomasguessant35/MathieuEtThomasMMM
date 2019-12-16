@@ -12,7 +12,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nom"
+        android:text="@string/nom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.275"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -28,7 +28,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="275dp"
         android:layout_marginBottom="527dp"
-        android:text="Prenom"
+        android:text="@string/prenom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
         android:layout_marginStart="83dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="484dp"
-        android:text="Date"
+        android:text="@string/date"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/editText"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +62,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editText2"
@@ -100,7 +101,7 @@
         android:layout_marginTop="22dp"
         android:layout_marginEnd="275dp"
         android:layout_marginBottom="443dp"
-        android:text="Ville de naissance"
+        android:text="@string/ville_de_naissance"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
