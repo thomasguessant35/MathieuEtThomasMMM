@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.textView) TextView prenom;
     @BindView(R.id.textView4) TextView date;
     @BindView(R.id.textView6) TextView ville_de_naissance;
-    @BindString(R.string.nom) String nomSaisi;
-    @BindString(R.string.prenom) String prenomSaisi;
-    @BindString(R.string.date) String dateSaisie;
-    @BindString(R.string.ville_de_naissance) String villeSaisie;
+    @BindView(R.id.editText2) EditText nomSaisi;
+    @BindView(R.id.editText3) EditText prenomSaisi;
+    @BindView(R.id.editText) EditText dateSaisie;
+    @BindView(R.id.editText4) EditText villeSaisie;
     @BindView(R.id.button) Button valider;
 
     @Override
@@ -76,9 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.button)
     public void valider(View view) {
-        Toast.makeText(getApplicationContext(), nomSaisi, Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(),prenomSaisi, Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(),dateSaisie, Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(),villeSaisie, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Nom: " + nomSaisi.getText() + "Prénom: " + prenomSaisi.getText() + "Date: " + dateSaisie.getText() + "Ville: " + villeSaisie.getText(), Toast.LENGTH_LONG).show();
     }
 }
