@@ -12,17 +12,27 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.BindString;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Bind(R.id.textView2) TextView nom;
-    @Bind(R.id.textView) TextView prenom;
-    @Bind(R.id.textView4) TextView date;
-    @Bind(R.id.textView6) TextView ville_de_naissance;
+    @BindView(R.id.textView2) TextView nom;
+    @BindView(R.id.textView) TextView prenom;
+    @BindView(R.id.textView4) TextView date;
+    @BindView(R.id.textView6) TextView ville_de_naissance;
+    @BindString(R.string.nom) String nomSaisi;
+    @BindString(R.string.prenom) String prenomSaisi;
+    @BindString(R.string.date) String dateSaisie;
+    @BindString(R.string.ville_de_naissance) String villeSaisie;
+    @BindView(R.id.button) Button valider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        ButterKnife.bind(this);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.button)
     public void valider(View view) {
-        Toast.makeText(getApplicationContext(),"coucou", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), nomSaisi, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),prenomSaisi, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),dateSaisie, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),villeSaisie, Toast.LENGTH_SHORT).show();
     }
 }
