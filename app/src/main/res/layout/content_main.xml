@@ -104,7 +104,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <EditText
+    <Spinner
         android:id="@+id/editText4"
         android:layout_width="197dp"
         android:layout_height="36dp"
@@ -116,7 +116,8 @@
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        android:entries="@array/departements"/>
 
     <Button
         android:id="@+id/button"
