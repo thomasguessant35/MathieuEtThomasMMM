@@ -1,23 +1,23 @@
 package com.example.mathieuetthomas;
 
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.text.InputType;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.util.Log;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
-import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -84,5 +84,13 @@ public class MainActivity extends AppCompatActivity {
         prenomSaisi.getText().clear();
         dateSaisie.getText().clear();
         villeSaisie.getText().clear();
+    }
+
+    public void addPhoneNumber(MenuItem item) {
+        LinearLayout rootView = findViewById(R.id.phoneNumberContainer);
+        EditText phoneNumberInput = new EditText(this);
+        phoneNumberInput.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        phoneNumberInput.setInputType(InputType.TYPE_CLASS_PHONE);
+        rootView.addView(phoneNumberInput);
     }
 }

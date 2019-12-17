@@ -13,4 +13,10 @@
         android:title="@string/action_reset"
         android:onClick="reset"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_phone"
+        android:orderInCategory="100"
+        android:title="@string/action_phone"
+        android:onClick="addPhoneNumber"
+        app:showAsAction="never" />
 </menu>
