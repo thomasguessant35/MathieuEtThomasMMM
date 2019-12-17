@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.editText2) EditText nomSaisi;
     @BindView(R.id.editText3) EditText prenomSaisi;
     @BindView(R.id.editText) EditText dateSaisie;
-    @BindView(R.id.editText4) EditText villeSaisie;
+    @BindView(R.id.editText4) Spinner villeSaisie;
     @BindView(R.id.button) Button valider;
 
     @Override
@@ -76,14 +77,14 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.button)
     public void valider(View view) {
-        Toast.makeText(getApplicationContext(), "Nom: " + nomSaisi.getText() + "Prénom: " + prenomSaisi.getText() + "Date: " + dateSaisie.getText() + "Ville: " + villeSaisie.getText(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Nom: " + nomSaisi.getText() + "Prénom: " + prenomSaisi.getText() + "Date: " + dateSaisie.getText() + "Ville: " + villeSaisie.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
     }
 
     public void reset(MenuItem item) {
         nomSaisi.getText().clear();
         prenomSaisi.getText().clear();
         dateSaisie.getText().clear();
-        villeSaisie.getText().clear();
+        villeSaisie.setSelection(0);
     }
 
     public void addPhoneNumber(MenuItem item) {
