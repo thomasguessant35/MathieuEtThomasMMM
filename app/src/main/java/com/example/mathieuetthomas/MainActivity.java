@@ -78,4 +78,11 @@ public class MainActivity extends AppCompatActivity {
     public void valider(View view) {
         Toast.makeText(getApplicationContext(), "Nom: " + nomSaisi.getText() + "Prénom: " + prenomSaisi.getText() + "Date: " + dateSaisie.getText() + "Ville: " + villeSaisie.getText(), Toast.LENGTH_LONG).show();
     }
+
+    public void reset(MenuItem item) {
+        nomSaisi.getText().clear();
+        prenomSaisi.getText().clear();
+        dateSaisie.getText().clear();
+        villeSaisie.getText().clear();
+    }
 }
