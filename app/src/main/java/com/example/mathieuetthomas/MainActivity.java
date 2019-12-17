@@ -84,6 +84,6 @@ public class MainActivity extends AppCompatActivity {
         nomSaisi.getText().clear();
         prenomSaisi.getText().clear();
         dateSaisie.getText().clear();
-        villeSaisie.getText().clear();
+        villeSaisie.setSelection(0);
     }
 }
