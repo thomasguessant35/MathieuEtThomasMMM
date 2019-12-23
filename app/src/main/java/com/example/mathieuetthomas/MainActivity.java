@@ -1,5 +1,6 @@
 package com.example.mathieuetthomas;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
@@ -30,9 +31,13 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.textView4) TextView date;
     @BindView(R.id.textView6) TextView ville_de_naissance;
     @BindView(R.id.editText2) EditText nomSaisi;
+    public static final String NOM_SAISI = "com.example.mathieuetthomas.NOM_SAISI";
     @BindView(R.id.editText3) EditText prenomSaisi;
+    public static final String PRENOM_SAISI = "com.example.mathieuetthomas.PRENOM_SAISI";
     @BindView(R.id.editText) EditText dateSaisie;
+    public static final String DATE_SAISIE = "com.example.mathieuetthomas.DATE_SAISIE";
     @BindView(R.id.editText4) Spinner villeSaisie;
+    public static final String VILLE_SAISIE = "com.example.mathieuetthomas.VILLE_SAISIE";
     @BindView(R.id.button) Button valider;
 
     @Override
@@ -77,7 +82,13 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.button)
     public void valider(View view) {
-        Toast.makeText(getApplicationContext(), "Nom: " + nomSaisi.getText() + "Prénom: " + prenomSaisi.getText() + "Date: " + dateSaisie.getText() + "Ville: " + villeSaisie.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "Nom: " + nomSaisi.getText() + "Prénom: " + prenomSaisi.getText() + "Date: " + dateSaisie.getText() + "Ville: " + villeSaisie.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
+        Intent displayIntent = new Intent(this, DisplayActivity.class);
+        displayIntent.putExtra(NOM_SAISI, this.nomSaisi.getText().toString());
+        displayIntent.putExtra(PRENOM_SAISI, this.prenomSaisi.getText().toString());
+        displayIntent.putExtra(VILLE_SAISIE, this.villeSaisie.getSelectedItem().toString());
+        displayIntent.putExtra(DATE_SAISIE, this.dateSaisie.getText().toString());
+        startActivity(displayIntent);
     }
 
     public void reset(MenuItem item) {
