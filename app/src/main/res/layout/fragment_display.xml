@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".DisplayActivity"
-    tools:showIn="@layout/activity_display">
+    tools:context=".Display">
 
     <TextView
         android:id="@+id/displayNom"
         android:layout_width="55dp"
         android:layout_height="20dp"
         android:layout_marginStart="170dp"
-        android:layout_marginTop="169dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="170dp"
         android:layout_marginBottom="487dp"
         android:text="TextView"
@@ -25,27 +24,11 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/displayDateNaissance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="170dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="170dp"
-        android:layout_marginBottom="356dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/displayPrenom"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
         android:id="@+id/displayPrenom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="170dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="170dp"
         android:layout_marginBottom="420dp"
         android:text="TextView"
@@ -57,11 +40,27 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
+        android:id="@+id/displayDateNaissance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="170dp"
+        android:layout_marginBottom="356dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayPrenom"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
         android:id="@+id/displayVilleNaissance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="170dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="170dp"
         android:layout_marginBottom="304dp"
         android:text="TextView"
@@ -70,4 +69,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/displayDateNaissance" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
