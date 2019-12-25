@@ -7,8 +7,8 @@
     import android.view.View;
     import android.view.ViewGroup;
     import android.widget.TextView;
+
     import androidx.fragment.app.Fragment;
-    import butterknife.BindView;
 
     public class Display extends Fragment {
 
@@ -32,10 +32,12 @@
             TextView prenomSaisi = view.findViewById(R.id.displayPrenom);
             TextView dateSaisie = view.findViewById(R.id.displayDateNaissance);
             TextView villeSaisie = view.findViewById(R.id.displayVilleNaissance);
+            TextView phoneNumberSaisi = view.findViewById(R.id.displayPhoneNumber);
             nomSaisi.setText(getArguments().getString("nomSaisi"));
             prenomSaisi.setText(getArguments().getString("prenomSaisi"));
             dateSaisie.setText(getArguments().getString("dateSaisie"));
             villeSaisie.setText(getArguments().getString("villeSaisie"));
+            phoneNumberSaisi.setText(getArguments().getString("phoneNumberSaisi"));
         }
         return view;
     }

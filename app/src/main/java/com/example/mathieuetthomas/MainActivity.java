@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements Home.OnHomeIntera
         bundle.putString("prenomSaisi", prenomSaisi);
         bundle.putString("dateSaisie", dateSaisie);
         bundle.putString("villeSaisie", villeSaisie);
+        EditText phoneNumber = findViewById(R.id.edit_text_phone);
+        if (phoneNumber != null) bundle.putString("phoneNumberSaisi", phoneNumber.getText().toString());
         navController.navigate(R.id.action_home_to_display, bundle);
     }
 
@@ -52,12 +55,22 @@ public class MainActivity extends AppCompatActivity implements Home.OnHomeIntera
     }
 
     public void reset(MenuItem item) {
-        // TODO
+        EditText nomSaisi = findViewById(R.id.editText2);
+        if (nomSaisi != null) nomSaisi.setText("");
+        EditText prenomSaisi = findViewById(R.id.editText3);
+        if (prenomSaisi != null) prenomSaisi.setText("");
+        EditText dateSaisie = findViewById(R.id.editText);
+        if (dateSaisie != null) dateSaisie.setText("");
+        Spinner villeSaisie = findViewById(R.id.editText4);
+        if (villeSaisie != null) villeSaisie.setSelection(0);
+        EditText phoneNumberSaisi = findViewById(R.id.edit_text_phone);
+        if (phoneNumberSaisi != null) phoneNumberSaisi.setText("");
     }
 
     public void addPhoneNumber(MenuItem item) {
         LinearLayout rootView = findViewById(R.id.phoneNumberContainer);
         EditText phoneNumberInput = new EditText(this);
+        phoneNumberInput.setId(R.id.edit_text_phone);
         phoneNumberInput.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         phoneNumberInput.setInputType(InputType.TYPE_CLASS_PHONE);
         rootView.addView(phoneNumberInput);
