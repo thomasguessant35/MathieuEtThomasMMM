@@ -33,12 +33,7 @@ public class Home extends Fragment {
         this.dateSaisie = v.findViewById(R.id.editText);
         this.villeSaisie = v.findViewById(R.id.editText4);
         Button b = v.findViewById(R.id.button);
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onButtonPressed(null);
-            }
-        });
+        b.setOnClickListener(view -> onButtonPressed(null));
 
         return v;
     }

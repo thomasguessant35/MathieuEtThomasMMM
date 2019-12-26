@@ -14,10 +14,12 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import butterknife.BindView;
 
-public class MainActivity extends AppCompatActivity implements Home.OnHomeInteractionListener, Display.OnDisplayInteractionListener {
+public class MainActivity extends AppCompatActivity implements Home.OnHomeInteractionListener, AddClient.OnAddClientInteractionListener {
 
     private NavController navController;
 
@@ -46,12 +48,7 @@ public class MainActivity extends AppCompatActivity implements Home.OnHomeIntera
         bundle.putString("villeSaisie", villeSaisie);
         EditText phoneNumber = findViewById(R.id.edit_text_phone);
         if (phoneNumber != null) bundle.putString("phoneNumberSaisi", phoneNumber.getText().toString());
-        navController.navigate(R.id.action_home_to_display, bundle);
-    }
-
-    @Override
-    public void onDisplayInteraction(Uri uri) {
-        navController.navigate(R.id.action_display_to_home);
+        navController.navigate(R.id.action_home_to_add_client, bundle);
     }
 
     public void reset(MenuItem item) {
@@ -74,5 +71,11 @@ public class MainActivity extends AppCompatActivity implements Home.OnHomeIntera
         phoneNumberInput.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         phoneNumberInput.setInputType(InputType.TYPE_CLASS_PHONE);
         rootView.addView(phoneNumberInput);
+    }
+
+    @Override
+    public void onAddClient(Uri uri) {
+        Bundle bundle = new Bundle();
+        navController.navigate(R.id.action_add_client_to_home, bundle);
     }
 }
