@@ -10,19 +10,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import butterknife.BindView;
 
 public class MainActivity extends AppCompatActivity implements Home.OnHomeInteractionListener, AddClient.OnAddClientInteractionListener {
 
     private NavController navController;
-
+    private ViewModel viewModel;
     @BindView(R.id.button) Button valider;
 
     @Override
@@ -30,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements Home.OnHomeIntera
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        // on crée une instance de notre ViewModel
+        viewModel = ViewModelProviders.of(this).get(ViewModel.class);
     }
 
     @Override
@@ -41,14 +40,13 @@ public class MainActivity extends AppCompatActivity implements Home.OnHomeIntera
 
     @Override
     public void onHomeActivityInteraction(Uri uri, String nomSaisi, String prenomSaisi, String dateSaisie, String villeSaisie) {
-        Bundle bundle = new Bundle();
-        bundle.putString("nomSaisi", nomSaisi);
-        bundle.putString("prenomSaisi", prenomSaisi);
-        bundle.putString("dateSaisie", dateSaisie);
-        bundle.putString("villeSaisie", villeSaisie);
+        Client nouveauClient = new Client(nomSaisi, prenomSaisi, dateSaisie, villeSaisie, "0000000000");
         EditText phoneNumber = findViewById(R.id.edit_text_phone);
-        if (phoneNumber != null) bundle.putString("phoneNumberSaisi", phoneNumber.getText().toString());
-        navController.navigate(R.id.action_home_to_add_client, bundle);
+        if (phoneNumber != null) {
+            nouveauClient.setPhone(phoneNumber.getText().toString());
+        }
+        viewModel.insert(nouveauClient);
+        navController.navigate(R.id.action_home_to_add_client);
     }
 
     public void reset(MenuItem item) {
@@ -75,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements Home.OnHomeIntera
 
     @Override
     public void onAddClient(Uri uri) {
-        Bundle bundle = new Bundle();
-        navController.navigate(R.id.action_add_client_to_home, bundle);
+        navController.navigate(R.id.action_add_client_to_home);
     }
 }

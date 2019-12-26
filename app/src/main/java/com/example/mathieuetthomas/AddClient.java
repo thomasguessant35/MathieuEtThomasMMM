@@ -4,7 +4,11 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +34,8 @@ public class AddClient extends Fragment {
 
     private OnAddClientInteractionListener mListener;
     private List<Client> clients;
+    private ViewModel viewModel;
+    ClientAdapter adapter;
 
     public AddClient() {
         // Required empty public constructor
@@ -52,15 +59,23 @@ public class AddClient extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundle = getArguments();
-        if(this.clients == null) this.clients = new ArrayList<>();
-        if (bundle != null) {
-            Client nouveauClient = new Client(bundle.getString("nomSaisi"), bundle.getString("prenomSaisi"), bundle.getString("dateSaisie"), bundle.getString("villeSaisie"), bundle.getString("phoneNumberSaisi"));
-            this.clients.add(nouveauClient);
-        }
-        else {
-            this.clients = new ArrayList<>();
-        }
+        this.adapter = new ClientAdapter(this.clients);
+        viewModel = ViewModelProviders.of(this).get(ViewModel.class);
+        // et on ajoute un observer sur les utilisateurs...
+        viewModel.getAllClients().observe(this, clients -> adapter.setClients(clients));
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                viewModel.delete(adapter.getClientAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getContext(), "Client deleted", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView((RecyclerView) getView());
     }
 
     @Override
@@ -70,9 +85,8 @@ public class AddClient extends Fragment {
         View view = inflater.inflate(R.layout.fragment_add_client, container, false);
         // Lookup the recyclerview in activity layout
         RecyclerView rvContacts = view.findViewById(R.id.recyclerView);
-        ClientAdapter adapter = new ClientAdapter(this.clients);
         // Attach the adapter to the recyclerview to populate items
-        rvContacts.setAdapter(adapter);
+        rvContacts.setAdapter(this.adapter);
         // Set layout manager to position the items
         rvContacts.setLayoutManager(new LinearLayoutManager(getContext()));
         Button b = view.findViewById(R.id.add_client);

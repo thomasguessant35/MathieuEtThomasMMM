@@ -1,11 +1,22 @@
 package com.example.mathieuetthomas;
 
-public class Client {
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "client_table")
+public class Client {
+    @PrimaryKey(autoGenerate = true)
+    public int uid;
+    @ColumnInfo(name = "nom")
     private String nom;
+    @ColumnInfo(name = "prenom")
     private String prenom;
+    @ColumnInfo(name = "date")
     private String date;
+    @ColumnInfo(name = "ville")
     private String ville;
+    @ColumnInfo(name = "phone")
     private String phone;
 
     public Client(String nom, String prenom, String date, String ville, String phone) {

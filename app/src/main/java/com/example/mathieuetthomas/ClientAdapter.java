@@ -4,10 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -60,7 +57,21 @@ public class ClientAdapter extends  RecyclerView.Adapter<ClientAdapter.ViewHolde
      */
     @Override
     public int getItemCount() {
-        return mContacts.size();
+        if (mContacts != null ) {
+            return mContacts.size();
+        }
+        else {
+            return 0;
+        }
+    }
+
+    public Client getClientAt(int adapterPosition) {
+        return mContacts.get(adapterPosition);
+    }
+
+    public void setClients(List<Client> clients) {
+        this.mContacts= clients;
+        notifyDataSetChanged();
     }
 
     // Provide a direct reference to each of the views within a data item
@@ -68,11 +79,11 @@ public class ClientAdapter extends  RecyclerView.Adapter<ClientAdapter.ViewHolde
     public class ViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
-        public TextView nomTextView;
-        public TextView prenomTextView;
-        public TextView dateTextView;
-        public TextView villeTextView;
-        public TextView phoneTextView;
+        private TextView nomTextView;
+        private TextView prenomTextView;
+        private TextView dateTextView;
+        private TextView villeTextView;
+        private TextView phoneTextView;
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
@@ -81,11 +92,11 @@ public class ClientAdapter extends  RecyclerView.Adapter<ClientAdapter.ViewHolde
             // to access the context from any ViewHolder instance.
             super(itemView);
 
-            nomTextView = (TextView) itemView.findViewById(R.id.client_nom);
-            prenomTextView = (TextView) itemView.findViewById(R.id.client_prenom);
-            dateTextView = (TextView) itemView.findViewById(R.id.client_date);
-            villeTextView = (TextView) itemView.findViewById(R.id.client_ville);
-            phoneTextView = (TextView) itemView.findViewById(R.id.client_phone);
+            nomTextView = itemView.findViewById(R.id.client_nom);
+            prenomTextView = itemView.findViewById(R.id.client_prenom);
+            dateTextView = itemView.findViewById(R.id.client_date);
+            villeTextView = itemView.findViewById(R.id.client_ville);
+            phoneTextView = itemView.findViewById(R.id.client_phone);
         }
     }
 }
