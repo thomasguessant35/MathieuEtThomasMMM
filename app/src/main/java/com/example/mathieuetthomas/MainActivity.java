@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
         ButterKnife.bind(this);
 
         // create the data
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         // handle the recycler view
         recyclerView = findViewById(R.id.recycler_view);
-        mAdapter = new ContactsAdapter(this, contactList, this);
+        mAdapter = new ContactsAdapter(this, contactList, (ContactsAdapter.ContactsAdapterListener) this); //(this, contactList, this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(mAdapter);
@@ -143,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
     public void onContactSelected(Contact contact) {
         Toast.makeText(getApplicationContext(), "Selected: " + contact.getName() + ", " + contact.getPhone(), Toast.LENGTH_LONG).show();
     }
