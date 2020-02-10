@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MathieuEtThomas</string>
     <string name="action_settings">Paramètres</string>
+    <string name="action_wiki">Wikipedia</string>
     <string name="action_reset">Réinitialiser</string>
     <string name="nom">Nom</string>
     <string name="prenom">Prenom</string>

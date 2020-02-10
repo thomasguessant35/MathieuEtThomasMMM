@@ -1,6 +1,7 @@
 package com.example.mathieuetthomas;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
@@ -104,5 +105,10 @@ public class MainActivity extends AppCompatActivity {
         phoneNumberInput.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         phoneNumberInput.setInputType(InputType.TYPE_CLASS_PHONE);
         rootView.addView(phoneNumberInput);
+    }
+
+    public void wikipedia(MenuItem item) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://fr.wikipedia.org"));
+        startActivity(intent);
     }
 }
