@@ -33,7 +33,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ContactsAdapter.ContactsAdapterListener {
 
     @BindView(R.id.textView2) TextView nom;
     @BindView(R.id.textView) TextView prenom;
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.button)
     public void valider(View view) {
-        //Toast.makeText(getApplicationContext(), "Nom: " + nomSaisi.getText() + "Prénom: " + prenomSaisi.getText() + "Date: " + dateSaisie.getText() + "Ville: " + villeSaisie.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Nom: " + nomSaisi.getText() + "Prénom: " + prenomSaisi.getText() + "Date: " + dateSaisie.getText() + "Ville: " + villeSaisie.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
         Intent displayIntent = new Intent(this, DisplayActivity.class);
         displayIntent.putExtra(NOM_SAISI, this.nomSaisi.getText().toString());
         displayIntent.putExtra(PRENOM_SAISI, this.prenomSaisi.getText().toString());
