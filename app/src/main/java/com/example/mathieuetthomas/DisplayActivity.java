@@ -35,12 +35,5 @@ public class DisplayActivity extends AppCompatActivity {
         // sets values given by main activity
         Intent givenIntent = getIntent();
         TextView displayNom = findViewById(R.id.displayNom);
-        displayNom.setText(givenIntent.getStringExtra(MainActivity.NOM_SAISI));
-        TextView displayPrenom = findViewById(R.id.displayPrenom);
-        displayPrenom.setText(givenIntent.getStringExtra(MainActivity.PRENOM_SAISI));
-        TextView displayVilleNaissance = findViewById(R.id.displayVilleNaissance);
-        displayVilleNaissance.setText(givenIntent.getStringExtra(MainActivity.VILLE_SAISIE));
-        TextView displayDateNaissance = findViewById(R.id.displayDateNaissance);
-        displayDateNaissance.setText(givenIntent.getStringExtra(MainActivity.DATE_SAISIE));
     }
 }

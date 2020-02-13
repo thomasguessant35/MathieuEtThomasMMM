@@ -35,19 +35,19 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements ContactsAdapter.ContactsAdapterListener {
 
-    @BindView(R.id.textView2) TextView nom;
+    /*@BindView(R.id.textView2) TextView nom;
     @BindView(R.id.textView) TextView prenom;
     @BindView(R.id.textView4) TextView date;
     @BindView(R.id.textView6) TextView ville_de_naissance;
-    @BindView(R.id.editText2) EditText nomSaisi;
-    public static final String NOM_SAISI = "com.example.mathieuetthomas.NOM_SAISI";
+    @BindView(R.id.editText2) EditText nomSaisi;*/
+/*    public static final String NOM_SAISI = "com.example.mathieuetthomas.NOM_SAISI";
     @BindView(R.id.editText3) EditText prenomSaisi;
     public static final String PRENOM_SAISI = "com.example.mathieuetthomas.PRENOM_SAISI";
     @BindView(R.id.editText) EditText dateSaisie;
     public static final String DATE_SAISIE = "com.example.mathieuetthomas.DATE_SAISIE";
     @BindView(R.id.editText4) Spinner villeSaisie;
     public static final String VILLE_SAISIE = "com.example.mathieuetthomas.VILLE_SAISIE";
-    @BindView(R.id.button) Button valider;
+    @BindView(R.id.button) Button valider;*/
 
     private RecyclerView recyclerView;
     private List<Contact> contactList;
@@ -58,8 +58,6 @@ public class MainActivity extends AppCompatActivity implements ContactsAdapter.C
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
         ButterKnife.bind(this);
 
         // create the data
@@ -71,19 +69,14 @@ public class MainActivity extends AppCompatActivity implements ContactsAdapter.C
 
         // handle the recycler view
         recyclerView = findViewById(R.id.recycler_view);
-        mAdapter = new ContactsAdapter(this, contactList, (ContactsAdapter.ContactsAdapterListener) this); //(this, contactList, this);
+        mAdapter = new ContactsAdapter(this, contactList, this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(mAdapter);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        FloatingActionButton fab = findViewById(R.id.myFAB);
+        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show());
     }
 
     @Override
@@ -147,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements ContactsAdapter.C
         Toast.makeText(getApplicationContext(), "Selected: " + contact.getName() + ", " + contact.getPhone(), Toast.LENGTH_LONG).show();
     }
 
-    @OnClick(R.id.button)
+/*    @OnClick(R.id.button)
     public void valider(View view) {
         Toast.makeText(getApplicationContext(), "Nom: " + nomSaisi.getText() + "Prénom: " + prenomSaisi.getText() + "Date: " + dateSaisie.getText() + "Ville: " + villeSaisie.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
         Intent displayIntent = new Intent(this, DisplayActivity.class);
@@ -156,22 +149,22 @@ public class MainActivity extends AppCompatActivity implements ContactsAdapter.C
         displayIntent.putExtra(VILLE_SAISIE, this.villeSaisie.getSelectedItem().toString());
         displayIntent.putExtra(DATE_SAISIE, this.dateSaisie.getText().toString());
         startActivity(displayIntent);
-    }
+    }*/
 
-    public void reset(MenuItem item) {
+/*    public void reset(MenuItem item) {
         nomSaisi.getText().clear();
         prenomSaisi.getText().clear();
         dateSaisie.getText().clear();
         villeSaisie.setSelection(0);
-    }
+    }*/
 
-    public void addPhoneNumber(MenuItem item) {
+/*    public void addPhoneNumber(MenuItem item) {
         LinearLayout rootView = findViewById(R.id.phoneNumberContainer);
         EditText phoneNumberInput = new EditText(this);
         phoneNumberInput.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         phoneNumberInput.setInputType(InputType.TYPE_CLASS_PHONE);
         rootView.addView(phoneNumberInput);
-    }
+    }*/
 
     public void wikipedia(MenuItem item) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://fr.wikipedia.org"));
